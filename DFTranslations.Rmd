@@ -1,0 +1,94 @@
+---
+title: "FA22 Project Markdown"
+author: "Liam Conaboy & Jeffrey Xing"
+date: "2022-10-21"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library("knitr")
+library("tidyverse")
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+
+```{r}
+
+# Reading in data
+df.f_as = read_csv(file = "concienciaysustancia10k7safe.csv")
+df.f_ocean = read_csv(file = "ocean157ksafe.csv")
+
+#Translating column names
+names(df.f_as) = c("0_religiosity", "0_freq_religious_practices", "0_change_freq_religious_practices",
+                   "0_freq_meditation", "0_change_freq_meditation", "0_prior_notice",
+                   "0_international", "0_taking_medication", "1_psychedelics_consumed",
+                   "2_times_consumed", "2_experience_qualification", "2_microdosing_progrom",
+                   "2_change_consumption", "2_spread_by_factors", "3_psychedelics_significant",
+                   "4_psychedelic_last_time", "5_psychedelic_reasons", "5_other_reasons",
+                   "6_psychoactives_consumed", "6_other_psychoactive", "7_marijuana", "7_stimulants",
+                   "7_sedatives", "7_antidepressants_or_antipsychotics", "7_disassociatives", "7_MDMA",
+                   "7_other", "7_marijuana_decrease_ext_factors", "7_stimulants_decrease_ext_factors",
+                   "7_sedatives_decrease_ext_factors", "7_antidep_or_anyipsyc_decrease_ext_factors",
+                   "7_dissociatives_decrease_ext_factors", "7_MDMA_decrease_ext_factors",
+                   "7_other_decrease_ext_factors", "7_tobacco", "7_tobacco_decrease_ext_factors",
+                   "7_caffeine", "7_caffeine_decrease_ext_factors", "7_alcohol", "7_alcohol_decrease_ext_factors",
+                   "8_calm", "8_safe", "8_tense", "8_disgusted", "8_fish_out_water", "8_changed",
+                   "8_satisfied", "8_afraid", "8_comfortable", "8_trusting", "8_nervous", "8_agitated",
+                   "8_indecisive", "8_quiet", "8_at_ease", "8_preoccupied", "8_stunned", "8_balanced",
+                   "8_good", "9_good", "9_high_strung", "9_at_ease", "9_like_to_be_happy", "9_feel_i_failed",
+                   "9_rested", "9_quiet_serene_calm", "9_difficulties_pile_up", "9_worry_unimportant_things", 
+                   "9_happy", "9_bad_thoughts", "9_lack_confidence", "9_safe", "9_decide_quickly",
+                   "9_out_of_place", "9_satisfied", "9_unimportant_things_occupy_annoy",
+                   "9_dissapointments_affect", "9_stable_person", "9_things_in_hand_nervous_tense",
+                   "10_interested", "10_distressed", "10_excited", "10_affected", "10_strong", "10_guilty",
+                   "10_afraid", "10_aggressive", "10_enthusiastic", "10_satisfied_with_self", "10_irritable",
+                   "10_awake", "10_ashamed", "10_inspired", "10_nervous", "10_decisive", "10_focused",
+                   "10_agitated", "10_active", "10_fearful", "11_know_what_want_to_do",
+                   "11_accept_what_goes_wrong", "11_important_to_think_about_future", "11_can_say_feelings",
+                   "11_people_like_me", "11_can_achieve_goals", "11_have_people_who_help",
+                   "11_get_along_with_people", "11_do_what_want", "11_think_life_as_project", 
+                   "11_accept_mistakes_improve", "11_make_decisions_without_doubt",
+                   "11_face_obligations_without_problems", "12_follow_through", 
+                   "12_handle_problems_diff_ways", "12_do_independently", "12_keep_important_things_inside",
+                   "12_important_things_interesting", "12_accept_things_without_worry", 
+                   "12_people_friendly_to_me", "12_multitask", "12_decisive", "12_rarely_ask_objective",
+                   "12_do_things_1_by_1", "12_self-disciplined", "12_keep_interest",
+                   "12_find_things_to_laugh_about", "12_trusted_in_difficult_times", 
+                   "12_can_be_trusted_in_emergencies", "12_can_see_different_POVs", "12_life_has_meaning",
+                   "12_dont_worry_abt_cant_control", "12_find_way_out_of_difficulty",
+                   "12_have_energy_for_what_i_have_to_do", "12_comfortable_being_disliked", "13_login_fork", 
+                   "hasmark") 
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+```{r cars}
+
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
