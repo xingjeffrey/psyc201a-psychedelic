@@ -1,0 +1,49 @@
+---
+title: 'PSYC 201A: Final Project Pitch'
+author: "Liam Conaboy, Jeffrey Xing"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# PSYC 201A Final Project Pitch
+
+In most cases, as part of the final project you will have conducted a reproducibility study of a published set of findings in the psychology literature. Conducting that study will involve getting practice downloading datasets associated with published work, exploring those datasets to discover patterns, and fitting statistical models that describe these patterns mathematically. You’ll also have the opportunity to communicate your findings as part of your final report and flash talk.
+
+Please note that if you have other ideas about what you would like to focus on in your final project (e.g., that is especially relevant to your research interests), please describe them in detail as part of your pitch so that the teaching team can provide you with feedback about how to proceed. 
+
+When you begin working on this assignment, please rename this file by replacing the suffix `_template.rmd` with `_LastName1LastName2.rmd`, where `LastName1` corresponds to one author, and `LastName1` corresponds to a second author, if applicable. There is no special meaning to being the "first" or "second" author. All team members will receive the same grade and credit for this final project. When you are finished writing your responses below, please knit this file to PDF and submit via Canvas. 
+
+## Author name(s)
+_This final project is meant to be conducted either individually or in pairs. On rare occasions, a group of three is permitted, but this group's project will be held to higher standards._
+
+* AUTHOR 1: Liam Conaboy
+* AUTHOR 2: Jeffrey Xing
+
+## Target article (if working with published data) or brief project description (if not working with published data)
+_If you are planning to work with published data, please provide the full APA reference for the paper you plan to base your reproducibility study on. If you are planning to work on unpublished data, please provide a concise but informative summary of the topic your proposed project addresses._
+
+> Cavanna, F., Pallavicini, C., Milano, V., Cuiule, J., Tella, R. D., González, P., & Tagliazucchi, E. (2021). Lifetime use of psychedelics is associated with better mental health indicators during the COVID-19 pandemic. Journal of Psychedelic Studies, 5(2), 83–93. https://doi.org/10.1556/2054.2021.00172
+
+## Key research question and findings
+_If you are working from published data, please provide a brief summary of the paper, including the core research question and the key findings. If you are interested in working on unpublished data, please also describe what specific research question and analyses you plan to conduct, in as concrete terms as possible._
+
+> Cavanna et al. (2021) examined the correlation of lifetime psychedelic use on mental health for healthy individuals during the COVID-19 pandemic. Previously, psychedelic use has shown to improve mental health in clinical populations, but such effects are unknown in healthy individuals. COVID-19 presented an adverse event for healthy individuals that grossly impacted mental health. The authors hypothesized that healthy individuals with history of lifetime psychedelic use may exhibit better mental health during the COVID-19 pandemic (as measured by the standardized scales described listed below). Analyzing the data of 5618 Argentinian participants over two surveys collected during the height of COVID-19, the authors show that although healthy individuals with lifetime psychedelic did not report better mental health, they reported personality traits that are associated with mental resilience in adverse events. Specificially, lifetime psychedlic use is linked with increased openness, higher levels of positive affect, and the number of past psychedelic experiences predicted higher mental plasticity. 
+
+> Scales:
+1. STAI (State-Trait Anxietyy Inventory), 
+2. PANAS (Positive and Negative Affect Schedule), 
+3. BIEPS (Psychological Well Being Scale),
+4. RS (Resilience Scale),
+5. BFI (Big Five Index)
+
+## Link to dataset or other resources
+_Please provide a link to either download the published dataset you plan to work with, or any other resources you are planning to use to base your project on._
+
+> Cavanna, F., Pallavicini, C., Milano, V., Cuiule, J., Tella, R. D., Gonzalez, P., & Tagliazucchi, E. (2020). Mental health, personality and lifetime psychedelic use during the COVID-19 pandemic. https://doi.org/10.5281/zenodo.4324025
+
+> Direct Zenodo link: https://zenodo.org/record/4324025
+
