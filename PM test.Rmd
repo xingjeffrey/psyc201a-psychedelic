@@ -4,6 +4,14 @@ output: pdf_document
 date: "2022-11-18"
 ---
 
+## Working on our initial report, it became evident that the raw data from Cavanna et al. (2021), "Lifetime use of psychedelics is associated with better mental health indicators during the COVID-19 pandemic" would not be appropriate to use for all aspects of the Final Project for PSYC 201A. The authors of said paper applied some exclusion criteria to their data which we simply would not be able to replicate, and this became apparent as we first attempted to replicate their exclusion criteria and then to replicate some of their statistical findings. Faced with a difficult decision, we opted to replicate the results and perform novel analysis on a similar paper: "Psychedelic mushrooms in the USA: Knowledge, patterns of use, and association with health outcomes," by Matzopoulos, Morlock, Morlock, Lerer & Lerer (2021). In this open dataset, we continued to find publication decisions on the part of authors which complicate complete replication, but feel they have provided sufficient data to allow for replication of some published results and novel analysis. We reviewed about ten papers in our search for a dataset for this project and learned a valuable lesson. We belive the challenges we've faced in finding an appropriate open dataset potentially speak to facets of an ongoing replication crisis in the fields of shared interest to us and highlight the importance of rigorous and open science as we move forward in our careers.
+
+## Matzopoulos, Morlock, Morlock, Lerer & Lerer (2021) examined the use of psychedelic mushrooms (PM) in association with measures of mental health status and outcomes and quality of life. They examined participants' motivations for consumption of PM including desires for general mental health and well-being, as medication for medically diagnosed conditions, and as self-medication for undiagnosed conditions. The authors observed that users of PM reported more depression and anxiety as measured by the GAD-7 and PHQ-9, as well as several other factors predictive of PM use such as gender and not having health insurance. Examining a sample of 7,139 participants weighted to current estimates of the US population, the authors report that a significant number of US adults are already self-medicating with PM. Positive press coverage and "hype" indicate that this proportion of the population is likely to increase, and this necessitates further research into the associatioin between PM use and poor mental health outcomes. 
+
+## Link to paper and dataset:
+## Published paper permalink: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8761614/
+## Dataset available via Zenodo: https://zenodo.org/record/5791226#.Y3lGFuzMKrO
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -11,7 +19,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r library}
 library(tidyverse)
 ```
-
+## Replication of Figure 1: Figure 1 represents a multivariate logistic regression model using predictive factors to predict use of PM. Predictive factors of PM use include being male and having a higher score on the Charlson Comorbidity Index. Self-report of PM use was less likely among participants who had health insurance, were relatively older, or who lived outside of the Western US Census region (i.e., in the Northeast, Midwest, or South).
 ## Load data
 
 ```{r load}
