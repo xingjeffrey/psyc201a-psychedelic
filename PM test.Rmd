@@ -28,6 +28,7 @@ PM_cleaned = PM %>%
     SEX, 
     AGE, 
     ETHNICITY, 
+    HLS_YN,
     REGION, 
     CCI_SCORE, 
     GAD7_GE10, 
@@ -48,7 +49,28 @@ PM_cleaned$PM_12M = PM_cleaned$PM_12M %>%
 ```
 
 ```{r}
-## refactor all booleans so they make sense
+## Make additional columns for individual risk factors
+PM_cleaned$BLACK = (PM_cleaned$ETHNICITY == 1)
+PM_cleaned$WHITE = (PM_cleaned$ETHNICITY == 2)
+PM_cleaned$OTHERETHNICITY = (PM_cleaned$ETHNICITY == 3)
+
+PM_cleaned$NORTHWEST = (PM_cleaned$REGION == 1)
+PM_cleaned$MIDWEST = (PM_cleaned$REGION == 2)
+PM_cleaned$SOUTH = (PM_cleaned$REGION == 3)
+PM_cleaned$WEST = (PM_cleaned$REGION == 4)
+
+## refactor columns
+PM_cleaned$SEX = PM_cleaned$SEX %>%
+  recode_factor(., `0` = 'Female', `1` = 'Male')
+
+PM_cleaned$ETHNICITY = PM_cleaned$ETHNICITY %>%
+  recode_factor(., `1` = 'Black', `2` = 'White', `3` = 'Other')
+
+PM_cleaned$HLS_YN = PM_cleaned$HLS_YN %>%
+  recode_factor(., `0` = 'None-Hispanic', `1` = 'Hispanic')
+
+PM_cleaned$REGION = PM_cleaned$REGION %>%
+  recode_factor(., `1` = 'Northwest', `2` = 'Midwest', `3` = 'South', `4` = 'West')
 
 ```
 
@@ -81,7 +103,7 @@ logistic.regression.or.ci <- function(regress.out, level = 0.95) {
 
 
 ```{r}
-full_model = glm(PM_12M ~ SEX + AGE + ETHNICITY + REGION + CCI_SCORE + GAD7_GE10 + PHQ9_GE10 + INSURANCE, data = PM_cleaned, family = binomial)
+full_model = glm(PM_12M ~ SEX + AGE + ETHNICITY + HLS_YN + REGION + CCI_SCORE + GAD7_GE10 + PHQ9_GE10 + INSURANCE, data = PM_cleaned, family = binomial)
 full_model_results = logistic.regression.or.ci(full_model)
 ```
 
@@ -102,7 +124,7 @@ df$or.cimax = full_model_results$OR.ci[,2]
 
 ```{r plot}
 ## try plotting
-ggplot(data = df, aes(y = full_model_results.OR, x = variable, ymin = or.cimin, ymax = or.cimax)) +
+ggplot(data = df, aes(x = full_model_results.OR, y = variable, xmin = or.cimin, xmax = or.cimax)) +
   geom_linerange() + 
   geom_point()
   
