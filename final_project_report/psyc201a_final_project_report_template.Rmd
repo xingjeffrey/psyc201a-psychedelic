@@ -1,0 +1,75 @@
+---
+title: 'Title of your project'
+author: "Author1, Author2, Author3"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+_Please rename this file by replacing the suffix `_template.rmd` with `_LastName1LastName2.rmd`, where `LastName1` corresponds to one author, and `LastName1` corresponds to a second author, if applicable. There is no special meaning to being the "first" or "second" author. All team members will receive the same grade and credit for this final project. When you are finished writing your responses below, please knit this file to PDF and submit via Canvas._ 
+
+_Please also delete any text that is included in this report template intended to provide you with guidance about what to include in your report. Keep the section headers and any subsection headers, but remove this italicized text so that your report reads like a genuine research report (rather than a class assignment)._ 
+
+## Abstract
+_Please write a brief summary (no more than 250 words) of your report that provides the following information: (1) Motivation for your study, and crisp specification of the research question posed by your project; (2) Methodological approach, including which sources of data you used and which variables were used to operationalize the constructs mentioned in your research question, as well as your statistical analysis approach; (3) Key results; (4) Broader implications._
+
+**INSERT YOUR RESPONSE HERE.**
+
+## Motivation
+_Please write a short paragraph describing the motivation for your study, including any *necessary* background information for a general reader to understand about the phenomenon you are investigating._
+
+## Research questions
+_Here you will write the crisply stated research questions that are the focus of our study. Please refer to the underlying constructs that you aim to understand with this research, even if they are not exactly the same as the variables you have measured. Each of these questions sets up a specific element of our analysis plan below._
+
+1. **Our first question**
+
+2. **Our second question**
+
+3. **Our third question**
+
+## Hypotheses
+_Here you will lay out different concrete possible outcomes that pertain to our first research question above, and state what each outcome would imply. Note that you do not need to commit to a particular belief about what you expect or "want" to find; it is sufficient to demonstrate that you understand what various outcomes would imply with respect to your research questions above._
+
+1. **If we find X, that would imply Y. On the other hand, if we find X', that would imply Y'.**
+
+2. **We do this again, but for our second question.**
+
+3. **If applicable, we now turn to our third question.**
+
+## Methods
+
+### Study type
+_Is this study employing experimental or observational data?_
+
+### Independent variables
+_If you are working with experimental data, precisely define any variables you plan to manipulate, including the levels and whether the manipulation will be between or within participants. If you are working with observational data, please define which predictor variables you will be analyzing._
+
+### Dependent variables
+_Please indicate a single outcome variable of interest._
+
+### Data preprocessing
+_What kinds of transformations will you need to apply to your data before you can fit a statistical model to them? What is your plan for handling missing data? How will you determine which data points or samples (if any) to exclude from your analyses? How will outliers be handled? Will you use any awareness or attention check?_
+
+## Results
+
+### Data visualizations
+_Please include at least one polished data visualization that visualizes the relationship between your independent and dependent variables. Please choose a graph type that makes it easy for your viewer to extract true and meaningful information about this relationship. Please visualize uncertainty in any point estimates (e.g., error bars or bands representing confidence intervals). Please ensure that the labels for all axes are legible, and that the axis limits make sense. Please provide a title for your visualization. Please use color only as needed in order to help communicate the key message your data visualization is intended to convey._
+
+### Statistical modeling
+_Please define at least one **COMPACT MODEL** and one **AUGMENTED MODEL** to compare._
+
+### Summary of findings
+_Please write a few sentences to explain what you can infer from your statistical analyses. Please report both inferential statistics (e.g., F-stat, p-values) pertaining to model comparisons. In addition, please write a few sentences that provide interpretation for what your modeling results mean, by converting the values in the table into understandable statements about how changes in key independent variables affect the dependent variable in units that will be meaningful to your reader._
+
+## Discussion
+_Please write a few sentences about the broader implications of this research. Please also note any methodological limitations or other open questions for future research to address._
+
+## References
+_Please provide a list of APA-formatted references, including references associated with data sources, you used for your project._
+
+
+
+

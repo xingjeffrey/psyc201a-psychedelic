@@ -1,0 +1,110 @@
+---
+title: "Testing Figure 1"
+output: html_document
+date: "2022-11-18"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r library}
+library(tidyverse)
+```
+
+## Load data
+
+```{r load}
+PM = read.csv('data/external/AHRI_DATASET_PM_MANUSCRIPT_DATA.csv')
+```
+
+## Clean data
+
+```{r clean}
+# only necessary columns for figure 1's multivariate logistical regression
+PM_cleaned = PM %>%
+  select(
+    CASEID_7139, 
+    SEX, 
+    AGE, 
+    ETHNICITY, 
+    REGION, 
+    CCI_SCORE, 
+    GAD7_GE10, 
+    PHQ9_GE10, 
+    INSURANCE, 
+    PM1_GEN_HEALTH, 
+    PM1_DIAG_CONDITION, 
+    PM1_UNDIAG_CONCERN
+    ) %>%
+  mutate(
+    PM_12M = PM1_GEN_HEALTH + PM1_UNDIAG_CONCERN + PM1_DIAG_CONDITION
+    )
+
+# calculate boolean for PM_12M
+PM_cleaned$PM_12M = PM_cleaned$PM_12M %>%
+  recode(`-297` = 0, `0` = 0, `1` = 1, `2` = 1, `3` = 1)
+
+```
+
+```{r}
+## refactor all booleans so they make sense
+
+```
+
+
+## Multivariate logistical regression
+
+```{r}
+## modified helper from https://rdrr.io/github/eringrand/RUncommon/src/R/logistic.regression.or.ci.R
+logistic.regression.or.ci <- function(regress.out, level = 0.95) {
+  usual.output <- summary(regress.out)
+  z.quantile <- stats::qnorm(1 - (1 - level) / 2)
+  number.vars <- length(regress.out$coefficients)
+  OR <- exp(regress.out$coefficients[-1])
+  temp.store.result <- matrix(rep(NA, number.vars * 2), nrow = number.vars)
+  for (i in 1:number.vars) {
+    temp.store.result[i, ] <- summary(regress.out)$coefficients[i] +
+      c(-1, 1) * z.quantile * summary(regress.out)$coefficients[i + number.vars]
+  }
+  intercept.ci <- temp.store.result[1, ]
+  slopes.ci <- temp.store.result[-1, ]
+  OR.ci <- exp(slopes.ci)
+  
+  output <- list(
+    regression.table = usual.output, intercept.ci = intercept.ci,
+    slopes.ci = slopes.ci, OR = OR, OR.ci = OR.ci
+  )
+  return(output)
+}
+```
+
+
+```{r}
+full_model = glm(PM_12M ~ SEX + AGE + ETHNICITY + REGION + CCI_SCORE + GAD7_GE10 + PHQ9_GE10 + INSURANCE, data = PM_cleaned, family = binomial)
+full_model_results = logistic.regression.or.ci(full_model)
+```
+
+```{r}
+full_model_results
+```
+
+```{r}
+df = data.frame(full_model_results$OR)
+df = cbind(variable = rownames(df), df)
+rownames(df) = 1:nrow(df)
+
+df$or.cimin = full_model_results$OR.ci[,1]
+df$or.cimax = full_model_results$OR.ci[,2]
+```
+
+
+
+```{r plot}
+## try plotting
+ggplot(data = df, aes(y = full_model_results.OR, x = variable, ymin = or.cimin, ymax = or.cimax)) +
+  geom_linerange() + 
+  geom_point()
+  
+```
+
