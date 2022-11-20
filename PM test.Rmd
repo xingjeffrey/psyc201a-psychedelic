@@ -139,3 +139,7 @@ ggplot(data = df, aes(x = full_model_results.OR, y = variable, xmin = or.cimin, 
   
 ```
 
+## The plot for our replication of Matzopoulos, Morlock, Morlock, Lerer & Lerer (2021)'s multivariate logistical regression resembles the original
+
+
+## For novel analysis, we elect to 
