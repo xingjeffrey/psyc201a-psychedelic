@@ -65,13 +65,13 @@ PM_cleaned$SEX = PM_cleaned$SEX %>%
   recode_factor(., `0` = 'Female', `1` = 'Male')
 
 PM_cleaned$ETHNICITY = PM_cleaned$ETHNICITY %>%
-  recode_factor(., `1` = 'Black', `2` = 'White', `3` = 'Other')
+  recode_factor(., `1` = 'Other', `2` = 'White', `3` = 'Other')
 
 PM_cleaned$HLS_YN = PM_cleaned$HLS_YN %>%
   recode_factor(., `0` = 'None-Hispanic', `1` = 'Hispanic')
 
 PM_cleaned$REGION = PM_cleaned$REGION %>%
-  recode_factor(.,  `4` = 'West',  `1` = 'Northeast', `2` = 'Midwest', `3` = 'South')
+  recode_factor(.,`1` = 'Northeast', `2` = 'Midwest', `3` = 'South', `4` = 'West')
 
 ```
 

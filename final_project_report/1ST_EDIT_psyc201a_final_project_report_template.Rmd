@@ -64,8 +64,17 @@ knitr::include_graphics("figures/f1rep.pdf")
 ### Statistical modeling
 _Please define at least one **COMPACT MODEL** and one **AUGMENTED MODEL** to compare._
 
+** COMPACT MODEL: PM Use = Error **
+
+** AUGMENTED MODEL: PM USE = Sex + Age + Ethnicity + Region + Co-morbidity + Anxiety + Depression + Insurance **
+
+** INTERACTION MODEL: PM USE = Sex + Age + Ethnicity + Region + Co-morbidity + Anxiety * Depression + Insurance **
+
+
 ### Summary of findings
 _Please write a few sentences to explain what you can infer from your statistical analyses. Please report both inferential statistics (e.g., F-stat, p-values) pertaining to model comparisons. In addition, please write a few sentences that provide interpretation for what your modeling results mean, by converting the values in the table into understandable statements about how changes in key independent variables affect the dependent variable in units that will be meaningful to your reader._
+
+Select demographic and health factors are predictive of past-year psychedelic mushroom use. Particularly, past-psychedelic mushroom use is associated with being male (OR = 2.73, 95% CI = [2.04, 3.65]), white (OR = 1.64, 95% CI = [1.18, 2.28]), higher co-morbidity (OR = 1.28, 95% CI = [1.14, 1.44]), and having moderate to severe depression (OR = 2.65, 95% CI = [1.84, 3.83]). Conversely, non-psychedelic use is associated with being from the midwest
 
 ## Discussion
 _Please write a few sentences about the broader implications of this research. Please also note any methodological limitations or other open questions for future research to address._
