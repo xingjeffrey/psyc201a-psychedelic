@@ -57,6 +57,10 @@ _What kinds of transformations will you need to apply to your data before you ca
 ### Data visualizations
 _Please include at least one polished data visualization that visualizes the relationship between your independent and dependent variables. Please choose a graph type that makes it easy for your viewer to extract true and meaningful information about this relationship. Please visualize uncertainty in any point estimates (e.g., error bars or bands representing confidence intervals). Please ensure that the labels for all axes are legible, and that the axis limits make sense. Please provide a title for your visualization. Please use color only as needed in order to help communicate the key message your data visualization is intended to convey._
 
+```{r, out.width="1\\linewidth", include=TRUE, fig.align="center", fig.cap=c("Odd ratios of past-year psychedelic mushroom use predicted by demographic and health factors. Odd ratios above 1 indicates that the factor is predictive of past-year psychedelic mushroom use, odd ratios below 1 indicates that the factor is predictive of non-psychedelic use."), echo=FALSE}
+knitr::include_graphics("figures/f1rep.pdf")
+```
+
 ### Statistical modeling
 _Please define at least one **COMPACT MODEL** and one **AUGMENTED MODEL** to compare._
 
