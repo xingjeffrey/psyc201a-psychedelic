@@ -1,0 +1,86 @@
+---
+title: 'Final Project Initial Report'
+author: "Jeffrey Xing and Liam Conaboy"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Abstract
+_Please write a brief summary (no more than 250 words) of your report that provides the following information: (1) Motivation for your study, and crisp specification of the research question posed by your project; (2) Methodological approach, including which sources of data you used and which variables were used to operationalize the constructs mentioned in your research question, as well as your statistical analysis approach; (3) Key results; (4) Broader implications._
+
+**Research suggests that psychiatric symptoms contribute to sharp declines in quality of life and life expectancy and clearly demonstrates the importance of addressing this (Blanco et al., 2021; Liu et al., 2017; Shanahan & Copeland, 2021). Psychedelic compounds are being posited as underutilized approaches for attenuation of psychiatric symptoms with promising results (Griffiths et al., 2011; Carhart-Harris et al., 2017). However, there appears to be a dearth of investigation regarding why individuals use psychedelics and their potential exacerbation of psychiatric symptoms. We therefore wanted to examine if individuals experiencing psychiatric distress are motivated to use psychedelic compounds despite their legal status, if positive media coverage or changes in public attitudes play a role in this motivation, and if this results in better or worse mental health outcomes. We replicated the findings of Matzopoulos et al. (2022) and conducted novel analysis on the relationships between variables like psychiatric symptoms, information participants received regarding psychedelics, mental health outcomes, and self-reported psychedelic mushroom (PM) use. We found [.......results here.......]. These results indicate that people experiencing psychiatric symptoms are likely to self-medicate with PMs, particularly when exposed to information about their benefits. This has consequences for society as legalization of PMs would likely increase using behavior and, without randomized controlled trials in human populations elucidating harmful side-effects, these could manifest in the population without a corrective mechanism or responsible disclaimer. More research needs to be done regarding the potential of PMs to exacerbate psychiatric symptoms, and responsible messaging surrounding this practice. **
+
+## Motivation
+_Please write a short paragraph describing the motivation for your study, including any *necessary* background information for a general reader to understand about the phenomenon you are investigating. : The last few decades have seen a marked change in scholarly research and public attitudes surrounding "psychedelic" compounds. These compounds are a diverse class, largely comprised of serotonergic hallucinogens. Changes in drug policy following randomized, controlled clinical trials have led to psychedelic prescriptions for treatment-resistant psychiatric disorders (Daly et al., 2018). Moreover, a complete reversal of the prevailing attitude toward these compounds in media and public consciousness, as well as publication of hundreds of papers on topics ranging from molecular characterization to therapeutic value constitute what some are calling a "Renaissance" (Sessa, 2018). Moreover, evidence suggests that these compounds have been used for centuries (Rodríguez Arce & Winkelman, 2021), and recreational or illegal use of these compounds persists worldwide, with PMs being one of the most longstanding psychedelic substances consumed by humans. Despite these changes in attitude and documentation that PMs are well-tolerated physiologically (Tylš et al., 2014), and although human consumption of psychedelics is not new, little scientific research has investigated their psychological harm potential. Widespread recreational use implies that data on the relationship between psychedelics and psychiatric symptoms exists outside of randomized controlled trials, a fact of which which our target article (Matzopoulos et al., 2022) made use. We are motivated to examine the data collected in this article to determine if relief from psychiatric symptoms drives recreational use of PMs, if promotion in media contributes to this phenomenon, and if there is any cause for concern regarding mental health outcomes resulting from PM use.  _
+
+## Research questions
+_Here you will write the crisply stated research questions that are the focus of our study. Please refer to the underlying constructs that you aim to understand with this research, even if they are not exactly the same as the variables you have measured. Each of these questions sets up a specific element of our analysis plan below._
+
+1. **Our first question: Do individuals experiencing psychiatric symptoms use PMs at a higher rate than those who are not?**
+
+2. **Our second question: Does positive media coverage or word-of-mouth communication on the benefits of PMs for psychiatric symptoms increase their use among individuals?**
+
+3. **Our third question: Does PM use result in any poor mental health outcomes, particularly the exacerbation of psychiatric symptoms?**
+
+## Hypotheses
+_Here you will lay out different concrete possible outcomes that pertain to our first research question above, and state what each outcome would imply. Note that you do not need to commit to a particular belief about what you expect or "want" to find; it is sufficient to demonstrate that you understand what various outcomes would imply with respect to your research questions above._
+
+1. **We hypothesize that there are correlations between self-reported PM use (or any psychedelic use) and an individual's mental health status indexed by self-reported anxiety, depression, insomnia or scores on different psychiatric evaluations such as the CCI, GAD-7, PHQ-9, MCS-12, and VR6D, as well as self-reported intentions to use PMs to relieve psychiatric symptoms. Finding significance in a multivariate linear regression between these variables and their interactions would suggest a relationship between PM use and an individual's mental health status.**
+
+2. **We hypothesize that positive media coverage or word-of-mouth communication about PMs is positively correlated with individuals' motivation to use them. Finding a significant positive correlation between PM use and hearing positive things about PM use, especially regarding use for psychiatric conditions and well being would suggest that there is a relationship between a person hearing positive things about using PMs and deciding to use them despite their legal classification**
+
+3. **We hypothesize PM use correlates with exacerbation of psychiatric symptoms. We will compare the CCI, GAD-7, PHQ-9, MCS-12, and VR6D scores for two populations, both experiencing psychiatric symptoms, but one which uses PMs and one which does not. Finding significantly higher scores on these measures for one population indicates a relationship between PM use or abstinence and exacerbation of symptoms.**
+
+4. **We hypothesize that a model which predicts PM use predicated on mental health status variables such as the dependent variables in our first hypothesis will better fit the target data than a model in which PM use predicted by a desire for general well-being or personal development. If MANOVA comparison of the two models reveals that the variables and interactions in hypothesis 1 account for more of the variance in the data than the variable in the second model above described, we may conclude that those variables are more predictive of PM use.**
+
+## Methods
+
+### Study type
+_Is this study employing experimental or observational data?: Our target study employs observational data obtained through a national (US) online study operative from November 2020 - March 2021._
+
+### Independent variables
+_If you are working with experimental data, precisely define any variables you plan to manipulate, including the levels and whether the manipulation will be between or within participants. If you are working with observational data, please define which predictor variables you will be analyzing._
+
+### Dependent variables
+_Please indicate a single outcome variable of interest._
+
+### Data preprocessing
+_What kinds of transformations will you need to apply to your data before you can fit a statistical model to them? What is your plan for handling missing data? How will you determine which data points or samples (if any) to exclude from your analyses? How will outliers be handled? Will you use any awareness or attention check?_
+
+## Results
+
+### Data visualizations
+_Please include at least one polished data visualization that visualizes the relationship between your independent and dependent variables. Please choose a graph type that makes it easy for your viewer to extract true and meaningful information about this relationship. Please visualize uncertainty in any point estimates (e.g., error bars or bands representing confidence intervals). Please ensure that the labels for all axes are legible, and that the axis limits make sense. Please provide a title for your visualization. Please use color only as needed in order to help communicate the key message your data visualization is intended to convey._
+
+### Statistical modeling
+_Please define at least one **COMPACT MODEL** and one **AUGMENTED MODEL** to compare._
+
+### Summary of findings
+_Please write a few sentences to explain what you can infer from your statistical analyses. Please report both inferential statistics (e.g., F-stat, p-values) pertaining to model comparisons. In addition, please write a few sentences that provide interpretation for what your modeling results mean, by converting the values in the table into understandable statements about how changes in key independent variables affect the dependent variable in units that will be meaningful to your reader._
+
+## Discussion
+_Please write a few sentences about the broader implications of this research. Please also note any methodological limitations or other open questions for future research to address._
+
+## References
+<!-- _Blanco, C., Wall, M. M., Hoertel, N., Krueger, R. F., Liu, S.-M., Grant, B. F., & Olfson, M. (2021). Psychiatric disorders and risk for multiple adverse outcomes: A national prospective study. Molecular Psychiatry, 26(3), Article 3. https://doi.org/10.1038/s41380-019-0459-4 -->
+
+<!-- Carhart-Harris, R. L., Roseman, L., Bolstridge, M., Demetriou, L., Pannekoek, J. N., Wall, M. B., Tanner, M., Kaelen, M., McGonigle, J., Murphy, K., Leech, R., Curran, H. V., & Nutt, D. J. (2017). Psilocybin for treatment-resistant depression: FMRI-measured brain mechanisms. Scientific Reports, 7(1), Article 1. https://doi.org/10.1038/s41598-017-13282-7 -->
+
+<!-- Daly, E. J., Singh, J. B., Fedgchin, M., Cooper, K., Lim, P., Shelton, R. C., Thase, M. E., Winokur, A., Van Nueten, L., Manji, H., & Drevets, W. C. (2018). Efficacy and Safety of Intranasal Esketamine Adjunctive to Oral Antidepressant Therapy in Treatment-Resistant Depression: A Randomized Clinical Trial. JAMA Psychiatry, 75(2), 139–148. https://doi.org/10.1001/jamapsychiatry.2017.3739 -->
+
+<!-- Griffiths, R. R., Johnson, M. W., Richards, W. A., Richards, B. D., McCann, U., & Jesse, R. (2011). Psilocybin occasioned mystical-type experiences: Immediate and persisting dose-related effects. Psychopharmacology, 218(4), 649–665. https://doi.org/10.1007/s00213-011-2358-5 -->
+
+<!-- Liu, N. H., Daumit, G. L., Dua, T., Aquila, R., Charlson, F., Cuijpers, P., Druss, B., Dudek, K., Freeman, M., Fujii, C., Gaebel, W., Hegerl, U., Levav, I., Munk Laursen, T., Ma, H., Maj, M., Elena Medina‐Mora, M., Nordentoft, M., Prabhakaran, D., … Saxena, S. (2017). Excess mortality in persons with severe mental disorders: A multilevel intervention framework and priorities for clinical practice, policy and research agendas. World Psychiatry, 16(1), 30–40. https://doi.org/10.1002/wps.20384 -->
+
+<!-- Rodríguez Arce, J. M., & Winkelman, M. J. (2021). Psychedelics, Sociality, and Human Evolution. Frontiers in Psychology, 12, 729425. https://doi.org/10.3389/fpsyg.2021.729425 -->
+<!-- Sessa, B. (2018). The 21st century psychedelic renaissance: Heroic steps forward on the back of an elephant. Psychopharmacology, 235(2), 551–560. https://doi.org/10.1007/s00213-017-4713-7 -->
+
+<!-- Shanahan, L., & Copeland, W. E. (2021). Psychiatry and Deaths of Despair. JAMA Psychiatry, 78(7), 695–696. https://doi.org/10.1001/jamapsychiatry.2021.0256 -->
+
+
+
