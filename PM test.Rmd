@@ -65,7 +65,7 @@ PM_cleaned$SEX = PM_cleaned$SEX %>%
   recode_factor(., `0` = 'Female', `1` = 'Male')
 
 PM_cleaned$ETHNICITY = PM_cleaned$ETHNICITY %>%
-  recode_factor(., `1` = 'Black', `2` = 'White', `3` = 'Other')
+  recode_factor(., `1` = 'Other', `2` = 'White', `3` = 'Other')
 
 PM_cleaned$HLS_YN = PM_cleaned$HLS_YN %>%
   recode_factor(., `0` = 'None-Hispanic', `1` = 'Hispanic')
@@ -101,12 +101,26 @@ logistic.regression.or.ci <- function(regress.out, level = 0.95) {
 }
 ```
 
+```{r}
+empty_model = glm(PM_12M ~ NULL, data = PM_cleaned, family = binomial)
+empty_model_results = logistic.regression.or.ci(empty_model)
+empty_model_results
+```
+
+
 
 ```{r}
 full_model = glm(PM_12M ~ SEX + AGE + ETHNICITY + REGION + CCI_SCORE + GAD7_GE10 + PHQ9_GE10 + INSURANCE, data = PM_cleaned, family = binomial)
 full_model_results = logistic.regression.or.ci(full_model)
 full_model_results
 ```
+
+```{r}
+interaction_model = glm(PM_12M ~ SEX * AGE + ETHNICITY + REGION + CCI_SCORE + GAD7_GE10 + PHQ9_GE10 + INSURANCE, data = PM_cleaned, family = binomial)
+interaction_model_results = logistic.regression.or.ci(interaction_model)
+interaction_model_results
+```
+
 
 ```{r}
 figure1df = data.frame(full_model_results$OR)

@@ -25,7 +25,7 @@ _Here you will write the crisply stated research questions that are the focus of
 
 2. **Our second question: Does positive media coverage or word-of-mouth communication on the benefits of PMs for psychiatric symptoms increase their use among individuals?**
 
-3. **Our third question: **
+3. **Our third question: Is PM use affected by potential interactions between different psychiatric symptoms?**
 
 ## Hypotheses
 _Here you will lay out different concrete possible outcomes that pertain to our first research question above, and state what each outcome would imply. Note that you do not need to commit to a particular belief about what you expect or "want" to find; it is sufficient to demonstrate that you understand what various outcomes would imply with respect to your research questions above._
@@ -47,7 +47,8 @@ _Is this study employing experimental or observational data?: Our target study e
 _If you are working with experimental data, precisely define any variables you plan to manipulate, including the levels and whether the manipulation will be between or within participants. If you are working with observational data, please define which predictor variables you will be analyzing._
 
 We will be analyzing four classes of predictor variables:
-1. 
+
+1. Demographic information (Age, Sex, )
 
 ### Dependent variables
 _Please indicate a single outcome variable of interest._

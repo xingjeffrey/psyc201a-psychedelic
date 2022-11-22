@@ -9,7 +9,6 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-
 ## Abstract
 
 Research suggests that psychiatric symptoms contribute to sharp declines in quality of life and life expectancy and clearly demonstrates the importance of addressing this (Blanco et al., 2021; Liu et al., 2017; Shanahan & Copeland, 2021). Psychedelic compounds are being posited as underutilized approaches for attenuation of psychiatric symptoms with promising results (Griffiths et al., 2011; Carhart-Harris et al., 2017). However, there appears to be a dearth of investigation regarding why individuals use psychedelics and their potential exacerbation of psychiatric symptoms. We therefore wanted to examine if individuals experiencing psychiatric distress are motivated to use psychedelic compounds despite their legal status, if positive media coverage or changes in public attitudes play a role in this motivation, and if this results in better or worse mental health outcomes. We replicated the findings of Matzopoulos et al. (2022) and conducted novel analysis on the relationships between variables like psychiatric symptoms, information participants received regarding psychedelics, mental health outcomes, and self-reported psychedelic mushroom (PM) use. We found [.......results here.......]. These results indicate that people experiencing psychiatric symptoms are likely to self-medicate with PMs, particularly when exposed to information about their benefits. This has consequences for society as legalization of PMs would likely increase using behavior and, without randomized controlled trials in human populations elucidating harmful side-effects, these could manifest in the population without a corrective mechanism or responsible disclaimer. More research needs to be done regarding the potential of PMs to exacerbate psychiatric symptoms, and responsible messaging surrounding this practice. 
@@ -81,7 +80,6 @@ $PM = Sex + Age + Ethnicity + Region + (Co-morbidity * Anxiety * Depression) + I
 
 
 ### Summary of findings
-_Please write a few sentences to explain what you can infer from your statistical analyses. Please report both inferential statistics (e.g., F-stat, p-values) pertaining to model comparisons. In addition, please write a few sentences that provide interpretation for what your modeling results mean, by converting the values in the table into understandable statements about how changes in key independent variables affect the dependent variable in units that will be meaningful to your reader._
 
 Select demographic and health factors are predictive of past-year psychedelic mushroom use. Particularly, past-psychedelic mushroom use is associated with being male (OR = 2.73, 95% CI = [2.04, 3.65]), white (OR = 1.64, 95% CI = [1.18, 2.28]), higher co-morbidity (OR = 1.28, 95% CI = [1.14, 1.44]), and having moderate to severe depression (OR = 2.65, 95% CI = [1.84, 3.83]). Conversely, non-psychedelic use is associated with increased age (OR = 0.95, 95% CI = [0.94, 0.96]) and being from the Midwest (OR = 0.62, 95% CI = [0.41, 0.95]). 
 
@@ -94,23 +92,24 @@ We also note that the augmented model (AIC = 1788.5) improved model fit over the
 ## Discussion
 _Please write a few sentences about the broader implications of this research. Please also note any methodological limitations or other open questions for future research to address._
 
-[Discussion on hold...]
+[Discussion on hold.]
 
 ## References
-<!-- _Blanco, C., Wall, M. M., Hoertel, N., Krueger, R. F., Liu, S.-M., Grant, B. F., & Olfson, M. (2021). Psychiatric disorders and risk for multiple adverse outcomes: A national prospective study. Molecular Psychiatry, 26(3), Article 3. https://doi.org/10.1038/s41380-019-0459-4 -->
+Blanco, C., Wall, M. M., Hoertel, N., Krueger, R. F., Liu, S.-M., Grant, B. F., & Olfson, M. (2021). Psychiatric disorders and risk for multiple adverse outcomes: A national prospective study. Molecular Psychiatry, 26(3), Article 3. https://doi.org/10.1038/s41380-019-0459-4
 
-<!-- Carhart-Harris, R. L., Roseman, L., Bolstridge, M., Demetriou, L., Pannekoek, J. N., Wall, M. B., Tanner, M., Kaelen, M., McGonigle, J., Murphy, K., Leech, R., Curran, H. V., & Nutt, D. J. (2017). Psilocybin for treatment-resistant depression: FMRI-measured brain mechanisms. Scientific Reports, 7(1), Article 1. https://doi.org/10.1038/s41598-017-13282-7 -->
+Carhart-Harris, R. L., Roseman, L., Bolstridge, M., Demetriou, L., Pannekoek, J. N., Wall, M. B., Tanner, M., Kaelen, M., McGonigle, J., Murphy, K., Leech, R., Curran, H. V., & Nutt, D. J. (2017). Psilocybin for treatment-resistant depression: FMRI-measured brain mechanisms. Scientific Reports, 7(1), Article 1. https://doi.org/10.1038/s41598-017-13282-7 
 
-<!-- Daly, E. J., Singh, J. B., Fedgchin, M., Cooper, K., Lim, P., Shelton, R. C., Thase, M. E., Winokur, A., Van Nueten, L., Manji, H., & Drevets, W. C. (2018). Efficacy and Safety of Intranasal Esketamine Adjunctive to Oral Antidepressant Therapy in Treatment-Resistant Depression: A Randomized Clinical Trial. JAMA Psychiatry, 75(2), 139–148. https://doi.org/10.1001/jamapsychiatry.2017.3739 -->
+Daly, E. J., Singh, J. B., Fedgchin, M., Cooper, K., Lim, P., Shelton, R. C., Thase, M. E., Winokur, A., Van Nueten, L., Manji, H., & Drevets, W. C. (2018). Efficacy and Safety of Intranasal Esketamine Adjunctive to Oral Antidepressant Therapy in Treatment-Resistant Depression: A Randomized Clinical Trial. JAMA Psychiatry, 75(2), 139–148. https://doi.org/10.1001/jamapsychiatry.2017.3739
 
-<!-- Griffiths, R. R., Johnson, M. W., Richards, W. A., Richards, B. D., McCann, U., & Jesse, R. (2011). Psilocybin occasioned mystical-type experiences: Immediate and persisting dose-related effects. Psychopharmacology, 218(4), 649–665. https://doi.org/10.1007/s00213-011-2358-5 -->
+Griffiths, R. R., Johnson, M. W., Richards, W. A., Richards, B. D., McCann, U., & Jesse, R. (2011). Psilocybin occasioned mystical-type experiences: Immediate and persisting dose-related effects. Psychopharmacology, 218(4), 649–665. https://doi.org/10.1007/s00213-011-2358-5
 
-<!-- Liu, N. H., Daumit, G. L., Dua, T., Aquila, R., Charlson, F., Cuijpers, P., Druss, B., Dudek, K., Freeman, M., Fujii, C., Gaebel, W., Hegerl, U., Levav, I., Munk Laursen, T., Ma, H., Maj, M., Elena Medina‐Mora, M., Nordentoft, M., Prabhakaran, D., … Saxena, S. (2017). Excess mortality in persons with severe mental disorders: A multilevel intervention framework and priorities for clinical practice, policy and research agendas. World Psychiatry, 16(1), 30–40. https://doi.org/10.1002/wps.20384 -->
+Liu, N. H., Daumit, G. L., Dua, T., Aquila, R., Charlson, F., Cuijpers, P., Druss, B., Dudek, K., Freeman, M., Fujii, C., Gaebel, W., Hegerl, U., Levav, I., Munk Laursen, T., Ma, H., Maj, M., Elena Medina‐Mora, M., Nordentoft, M., Prabhakaran, D., … Saxena, S. (2017). Excess mortality in persons with severe mental disorders: A multilevel intervention framework and priorities for clinical practice, policy and research agendas. World Psychiatry, 16(1), 30–40. https://doi.org/10.1002/wps.20384
 
-<!-- Rodríguez Arce, J. M., & Winkelman, M. J. (2021). Psychedelics, Sociality, and Human Evolution. Frontiers in Psychology, 12, 729425. https://doi.org/10.3389/fpsyg.2021.729425 -->
-<!-- Sessa, B. (2018). The 21st century psychedelic renaissance: Heroic steps forward on the back of an elephant. Psychopharmacology, 235(2), 551–560. https://doi.org/10.1007/s00213-017-4713-7 -->
+Rodríguez Arce, J. M., & Winkelman, M. J. (2021). Psychedelics, Sociality, and Human Evolution. Frontiers in Psychology, 12, 729425. https://doi.org/10.3389/fpsyg.2021.729425
 
-<!-- Shanahan, L., & Copeland, W. E. (2021). Psychiatry and Deaths of Despair. JAMA Psychiatry, 78(7), 695–696. https://doi.org/10.1001/jamapsychiatry.2021.0256 -->
+Sessa, B. (2018). The 21st century psychedelic renaissance: Heroic steps forward on the back of an elephant. Psychopharmacology, 235(2), 551–560. https://doi.org/10.1007/s00213-017-4713-7 
+
+Shanahan, L., & Copeland, W. E. (2021). Psychiatry and Deaths of Despair. JAMA Psychiatry, 78(7), 695–696. https://doi.org/10.1001/jamapsychiatry.2021.0256
 
 
 
