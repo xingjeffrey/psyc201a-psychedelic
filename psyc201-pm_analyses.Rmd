@@ -1,0 +1,308 @@
+---
+title: "Analyses for Psychedelic Mushroom Dataset"
+author: "Jeffrey Xing and Liam Conaboy"
+date: '`r Sys.Date()`'
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Notes for Pivoting Dataset
+
+Working on our initial report, it became evident that the raw data from Cavanna et al. (2021), "Lifetime use of psychedelics is associated with better mental health indicators during the COVID-19 pandemic" would not be appropriate to use for all aspects of the Final Project for PSYC 201A. The authors of said paper applied some exclusion criteria to their data which we simply would not be able to replicate, and this became apparent as we first attempted to replicate their exclusion criteria and then to replicate some of their statistical findings. Faced with a difficult decision, we opted to replicate the results and perform novel analysis on a similar paper: "Psychedelic mushrooms in the USA: Knowledge, patterns of use, and association with health outcomes," by Matzopoulos, Morlock, Morlock, Lerer & Lerer (2021). In this open dataset, we continued to find publication decisions on the part of authors which complicate complete replication, but feel they have provided sufficient data to allow for partial replication of some published results and novel analysis. We reviewed about ten papers in our search for a dataset for this project and learned a valuable lesson. We believe the challenges we've faced in finding an appropriate open dataset potentially reflect facets of an ongoing replication crisis in the fields of shared interest to us and highlight the importance of rigorous and open science as we move forward in our careers.
+
+## Dataset Abstract
+
+Matzopoulos, Morlock, Morlock, Lerer & Lerer (2021) examined the use of psychedelic mushrooms (PM) in association with measures of mental health status and outcomes and quality of life. They examined participants' motivations for consumption of PM including desires for general mental health and well-being, as medication for medically diagnosed conditions, and as self-medication for undiagnosed conditions. The authors observed that users of PM reported more depression and anxiety as measured by the GAD-7 and PHQ-9, as well as several other factors predictive of PM use such as gender and not having health insurance. Examining a sample of 7,139 participants weighted to current estimates of the US population, the authors report that a significant number of US adults are already self-medicating with PM. Positive press coverage and "hype" indicate that this proportion of the population is likely to increase, and this necessitates further research into the association between PM use and poor mental health outcomes. 
+
+### Link to paper and dataset:
+> Published paper permalink: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8761614/
+> Dataset available via Zenodo: https://zenodo.org/record/5791226#.Y3lGFuzMKrO
+
+## Data Cleaning
+
+### Load necessary libraries
+```{r library}
+library(tidyverse)
+```
+
+### Load data
+
+```{r load}
+PM = read.csv('data/external/AHRI_DATASET_PM_MANUSCRIPT_DATA.csv')
+```
+
+### Select necessary columns
+```{r}
+PM_cleaned = PM %>%
+  select(
+    CASEID_7139, 
+    SEX, 
+    AGE, 
+    ETHNICITY, 
+    HLS_YN,
+    REGION, 
+    CCI_SCORE, 
+    GAD7_GE10, 
+    PHQ9_GE10, 
+    INSURANCE, 
+    PM1_GEN_HEALTH, 
+    PM1_DIAG_CONDITION, 
+    PM1_UNDIAG_CONCERN,
+    PSY1_POSITIVE_USE,
+    PM_USE_ONLY_YN,
+    PM_VS_PSY_YN,
+    DATA_WEIGHT
+    )
+```
+
+### Calculate Past-year PM use
+```{r}
+## pool all past-year PM columns together
+PM_cleaned = PM_cleaned %>%
+  mutate(
+    PM_12M = PM1_GEN_HEALTH + PM1_UNDIAG_CONCERN + PM1_DIAG_CONDITION
+    )
+
+# calculate boolean for PM_12M
+PM_cleaned$PM_12M = PM_cleaned$PM_12M %>%
+  recode(`-297` = 0, `0` = 0, `1` = 1, `2` = 1, `3` = 1)
+```
+
+### Refactor Predictor Variables
+```{r}
+## refactor columns
+PM_cleaned$SEX = PM_cleaned$SEX %>%
+  recode_factor(., `0` = 'Female', `1` = 'Male')
+
+PM_cleaned$ETHNICITY = PM_cleaned$ETHNICITY %>%
+  recode_factor(., `1` = 'Other', `2` = 'White', `3` = 'Other')
+
+PM_cleaned$HLS_YN = PM_cleaned$HLS_YN %>%
+  recode_factor(., `0` = 'None-Hispanic', `1` = 'Hispanic')
+
+PM_cleaned$REGION = PM_cleaned$REGION %>%
+  recode_factor(.,  `4` = 'West',  `1` = 'Northeast', `2` = 'Midwest', `3` = 'South')
+```
+
+## Hypothesis 1: 
+$PM = Mental Health Status + Error$
+
+### Multivariate Logistical Regression
+
+#### Add helper
+
+```{r}
+## modified helper from 
+## https://rdrr.io/github/eringrand/RUncommon/src/R/logistic.regression.or.ci.R
+logistic.regression.or.ci <- function(regress.out, level = 0.95) {
+  usual.output <- summary(regress.out)
+  z.quantile <- stats::qnorm(1 - (1 - level) / 2)
+  number.vars <- length(regress.out$coefficients)
+  OR <- exp(regress.out$coefficients[-1])
+  temp.store.result <- matrix(rep(NA, number.vars * 2), nrow = number.vars)
+  for (i in 1:number.vars) {
+    temp.store.result[i, ] <- summary(regress.out)$coefficients[i] +
+      c(-1, 1) * z.quantile * summary(regress.out)$coefficients[i + number.vars]
+  }
+  intercept.ci <- temp.store.result[1, ]
+  slopes.ci <- temp.store.result[-1, ]
+  OR.ci <- exp(slopes.ci)
+  
+  output <- list(
+    regression.table = usual.output, intercept.ci = intercept.ci,
+    slopes.ci = slopes.ci, OR = OR, OR.ci = OR.ci
+  )
+  return(output)
+}
+```
+
+#### Empty Model
+
+```{r}
+empty_model = glm(PM_12M ~ NULL, data = PM_cleaned, family = binomial)
+empty_model_results = logistic.regression.or.ci(empty_model)
+empty_model_results
+```
+
+#### Full Model
+
+```{r}
+full_model = glm(PM_12M ~ SEX + AGE + ETHNICITY + REGION + CCI_SCORE + GAD7_GE10 + PHQ9_GE10 + INSURANCE, data = PM_cleaned, family = binomial)
+full_model_results = logistic.regression.or.ci(full_model)
+full_model_results
+```
+
+#### Visualize
+```{r,echo=FALSE}
+## grab OR into a dataframe
+figure1df = data.frame(full_model_results$OR)
+figure1df = cbind(Factor = rownames(figure1df), figure1df)
+rownames(figure1df) = 1:nrow(figure1df)
+
+## grab OR CI
+figure1df$or.cimin = full_model_results$OR.ci[,1]
+figure1df$or.cimax = full_model_results$OR.ci[,2]
+
+## Recode some factor names
+figure1df$Factor = figure1df %>%
+  pull(Factor) %>%
+  recode_factor(
+    `SEXMale` = "Male",
+    `AGE` = "Age",
+    `ETHNICITYWhite` = "Ethnicity: White",
+    `REGIONNortheast` = "Region: Northeast",
+    `REGIONMidwest` = "Region: Midwest",
+    `REGIONSouth` = "Region: South",
+    `CCI_SCORE` = "Charlson Comorbidity Index Score",
+    `GAD7_GE10` = "Moderate to severe anxiety",
+    `PHQ9_GE10` = "Moderate to severe depression",
+    `INSURANCE` = "Health Insurance"
+    )
+
+## try plotting
+ggplot(data = figure1df, aes(x = full_model_results.OR, y = Factor, xmin = or.cimin, xmax = or.cimax)) +
+  geom_linerange() + 
+  geom_point(size = 2) +
+  theme_bw() +
+  scale_y_discrete(limits=rev) + 
+  geom_vline(aes(xintercept = 1), linetype = 'dashed') + 
+  labs(
+    title = 'Select demographic and health factors predict past year psychedelic mushroom use',
+    x = 'Odds ratio (OR), 95% Confidence Interval (CI)',
+    color = 'OR'
+  ) +
+  xlim(0, 4) + 
+  theme(
+    plot.title = element_text(size=12,face = "bold"),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank()
+  ) +
+  guides(fill=guide_legend(title="New Legend Title"))
+
+ggsave(filename = 'f1rep.pdf', width = 9, height = 4, dpi = 300)
+```
+
+## Hypothesis 2:
+Positive PM Perception = PM Use + Error
+
+### Distinguish PM-Only users and Non-psychedelic users
+```{r}
+PM_cleaned_PMvsNonPsy = PM_cleaned %>%
+  ## leave only pm use only and non-psyc
+  filter(PM_USE_ONLY_YN == 1 | PM_VS_PSY_YN == -99)
+
+## make PM_USE_ONLY_YN factor
+PM_cleaned_PMvsNonPsy$PM_USE_ONLY_YN = PM_cleaned_PMvsNonPsy$PM_USE_ONLY_YN %>%
+  recode_factor(`0` = 'NONE', `1` = 'PM ONLY')
+```
+
+### One-way ANOVA
+```{r}
+PMUser_model = lm(PSY1_POSITIVE_USE ~ PM_USE_ONLY_YN, data = PM_cleaned_PMvsNonPsy, weights = DATA_WEIGHT)
+```
+
+#### Summary
+```{r}
+summary(PMUser_model)
+```
+
+#### ANOVA
+```{r}
+anova(PMUser_model)
+```
+
+### Plot
+```{r}
+PM_cleaned_PMvsNonPsy %>%
+  ggplot(mapping = aes(x= PM_USE_ONLY_YN, y = PSY1_POSITIVE_USE, weight = DATA_WEIGHT)) +
+  stat_summary(geom = 'bar') +
+  stat_summary(geom = 'errorbar', width = 0.25) +
+  theme_bw() +
+  theme(
+    plot.title = element_text(size=12,face = "bold"),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank()
+  )+
+  labs(
+    title = 'PM Users are more likely to have heard about \npositive effects of PM on mental health',
+    x = 'Psychedelic Use',
+    y = "Unawareness of PM's positive effects",
+    color = 'OR'
+  ) +
+  ylim(0, 5)
+
+ggsave(filename = 'f2rep.pdf', width = 4, height = 4, dpi = 300)
+```
+
+#### Logistic Regression
+```{r}
+knowledge_model = glm(PM_12M ~ PSY1_POSITIVE_USE, data = PM_cleaned, family = binomial)
+knowledge_model_results = logistic.regression.or.ci(knowledge_model)
+knowledge_model_results
+```
+
+### Plot Logistic Regression
+```{r}
+PM_cleaned %>%
+  ggplot(mapping = aes(x = PSY1_POSITIVE_USE, y = PM_12M)) +
+  geom_jitter(size = 0.5, height = 0.25, width = 0.15, alpha = 0.75) +
+  stat_smooth(method="glm", method.args = list(family=binomial), size = 2) +
+  labs(
+    title = "Knowledge of PM's positive effects predict past-year PM Use",
+    x = "Unawareness of PM's positive effects",
+    y = 'Past-year PM Use'
+  ) +
+  theme_bw() +
+  theme(
+    plot.title = element_text(size=12,face = "bold"),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank()
+  ) +
+  ylim(0, 1)
+  
+ggsave(filename = 'f3rep.pdf', width = 6, height = 4, dpi = 300)
+```
+
+## Hypothesis 3
+Interaction models
+
+```{r}
+health_interaction_model = glm(PM_12M ~ SEX + AGE + ETHNICITY + REGION + CCI_SCORE + (GAD7_GE10 * PHQ9_GE10) + INSURANCE, data = PM_cleaned, family = binomial)
+health_interaction_model_results = logistic.regression.or.ci(health_interaction_model)
+health_interaction_model_results
+```
+
+```{r}
+demographic_interaction_model = glm(PM_12M ~ (SEX * AGE) + ETHNICITY + REGION + CCI_SCORE + GAD7_GE10 + PHQ9_GE10 + INSURANCE, data = PM_cleaned, family = binomial)
+demographic_interaction_model_results = logistic.regression.or.ci(demographic_interaction_model)
+demographic_interaction_model_results
+```
+
+### Plot Demographic Interaction
+```{r}
+PM_cleaned %>%
+  ggplot(mapping = aes(x = AGE, y = PM_12M, color = SEX)) +
+  #geom_jitter(size = 0.5, height = 0.25, width = 0.15, alpha = 0.75) +
+  stat_smooth(method="glm", method.args = list(family=binomial), size = 2) +
+  labs(
+    title = "Older males are more likely to use more than older females",
+    x = "Age",
+    y = 'Probability of Past-year PM Use',
+    color = "Sex"
+  ) +
+  theme_bw() +
+  theme(
+    plot.title = element_text(size=12,face = "bold"),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank()
+  )
+
+ggsave(filename = 'f4nov.pdf', width = 6, height = 4, dpi = 300)
+```

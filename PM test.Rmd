@@ -46,7 +46,11 @@ PM_cleaned = PM %>%
     INSURANCE, 
     PM1_GEN_HEALTH, 
     PM1_DIAG_CONDITION, 
-    PM1_UNDIAG_CONCERN
+    PM1_UNDIAG_CONCERN,
+    PSY1_POSITIVE_USE,
+    PM_USE_ONLY_YN,
+    PM_VS_PSY_YN,
+    DATA_WEIGHT
     ) %>%
   mutate(
     PM_12M = PM1_GEN_HEALTH + PM1_UNDIAG_CONCERN + PM1_DIAG_CONDITION
@@ -102,9 +106,15 @@ logistic.regression.or.ci <- function(regress.out, level = 0.95) {
 ```
 
 ```{r}
-empty_model = glm(PM_12M ~ NULL, data = PM_cleaned, family = binomial)
+empty_model = glm(PM_12M ~ NULL, data = PM_cleaned, family = binomial, weights = DATA_WEIGHT)
 empty_model_results = logistic.regression.or.ci(empty_model)
 empty_model_results
+```
+
+```{r}
+full_model = glm(PM_12M ~ SEX + AGE + ETHNICITY + REGION + CCI_SCORE + GAD7_GE10 + PHQ9_GE10 + INSURANCE, data = PM_cleaned, family = binomial)
+full_model_results = logistic.regression.or.ci(full_model)
+full_model_results
 ```
 
 
@@ -116,11 +126,16 @@ full_model_results
 ```
 
 ```{r}
-interaction_model = glm(PM_12M ~ SEX * AGE + ETHNICITY + REGION + CCI_SCORE + GAD7_GE10 + PHQ9_GE10 + INSURANCE, data = PM_cleaned, family = binomial)
-interaction_model_results = logistic.regression.or.ci(interaction_model)
-interaction_model_results
+health_interaction_model = glm(PM_12M ~ SEX + AGE + ETHNICITY + REGION + CCI_SCORE + (GAD7_GE10 * PHQ9_GE10) + INSURANCE, data = PM_cleaned, family = binomial, weights = DATA_WEIGHT)
+health_interaction_model_results = logistic.regression.or.ci(health_interaction_model)
+health_interaction_model_results
 ```
 
+```{r}
+demographic_interaction_model = glm(PM_12M ~ (SEX * AGE) + ETHNICITY + REGION + CCI_SCORE + GAD7_GE10 + PHQ9_GE10 + INSURANCE, data = PM_cleaned, family = binomial, weights = DATA_WEIGHT)
+demographic_interaction_model_results = logistic.regression.or.ci(demographic_interaction_model)
+demographic_interaction_model_results
+```
 
 ```{r}
 figure1df = data.frame(full_model_results$OR)
@@ -172,7 +187,30 @@ ggplot(data = figure1df, aes(x = full_model_results.OR, y = Factor, xmin = or.ci
 ggsave(filename = 'f1rep.pdf', width = 9, height = 4)
 ```
 
-## The plot for our replication of Matzopoulos, Morlock, Morlock, Lerer & Lerer (2021)'s multivariate logistical regression resembles the original
+```{r}
+PM_cleaned_PMvsNonPsy = PM_cleaned %>%
+  ## leave only pm use only and non-psyc
+  filter(PM_USE_ONLY_YN == 1 | PM_VS_PSY_YN == -99)
+  
+  
+PM_cleaned_PMvsNonPsy
+```
+```{r}
+PM_cleaned = PM_cleaned %>%
+  mutate(weights_rounded = round(DATA_WEIGHT))
+```
 
 
-## For novel analysis, we elect to 
+```{r}
+## deal with hypothesis 2
+summary(lm(PSY1_POSITIVE_USE ~ PM_USE_ONLY_YN, data = PM_cleaned_PMvsNonPsy, weights = DATA_WEIGHT))
+```
+
+
+```{r}
+PM_cleaned_PMvsNonPsy %>%
+  group_by(PM_USE_ONLY_YN) %>%
+  summarize(sd = sd(PSY1_POSITIVE_USE))
+
+```
+
