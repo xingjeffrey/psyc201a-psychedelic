@@ -304,7 +304,7 @@ PM_cleaned %>%
   #geom_jitter(size = 0.5, height = 0.25, width = 0.15, alpha = 0.75) +
   stat_smooth(method="glm", method.args = list(family=binomial), size = 2) +
   labs(
-    title = "Older males are more likely to use PM than older females",
+    title = "Sex-based differences in PM use increases with age",
     x = "Age",
     y = 'Probability of Past-year PM Use',
     color = "Sex"
@@ -319,4 +319,9 @@ PM_cleaned %>%
   )
 
 ggsave(filename = 'figures/f4nov.pdf', width = 6, height = 4, dpi = 300)
+```
+
+# Session Info
+```{r}
+sessionInfo()
 ```

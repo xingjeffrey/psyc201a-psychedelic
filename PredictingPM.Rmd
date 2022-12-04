@@ -1,0 +1,148 @@
+---
+title: 'Predicting Psychedelic Mushroom Use'
+author: "Jeffrey Xing and Liam Conaboy"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Abstract
+_Please write a brief summary (no more than 250 words) of your report that provides the following information: (1) Motivation for your study, and crisp specification of the research question posed by your project; (2) Methodological approach, including which sources of data you used and which variables were used to operationalize the constructs mentioned in your research question, as well as your statistical analysis approach; (3) Key results; (4) Broader implications._
+
+Psychiatric symptoms contribute to sharp declines in quality of life and life expectancy (Blanco et al., 2021; Liu et al., 2017; Shanahan & Copeland, 2021), and psychedelic compounds are underutilized approaches for attenuating psychiatric symptoms that have shown promising results (Griffiths et al., 2011; Carhart-Harris et al., 2017). However, motivations for using psychedelic compounds in the general public and their relationship to mental health is not clearly known. To investigate factors that contribute to psychedelic compound use, we replicated select findings of Matzopoulos et al. (2022) regarding self-reported psychedelic mushroom (PM) use, previous exposure to PM's positive effects on mental health, and psychiatric symptoms. Using logistical regression, we show that people who are more likely to use PM have previous exposure to PM's positive effects on mental health, and are likely to be moderately to severely depressed. A novel analysis shows that older males are more likely to use PM than older females, whereas there is likely no sex-based difference in the youngest users. These results indicate that people experiencing psychiatric symptoms are likely to self-medicate with PMs, particularly when exposed to information about their benefits. This has consequences for society as legalization of PMs would likely increase using behavior and, without randomized controlled trials in human populations elucidating harmful side-effects, these could manifest in the population without a corrective mechanism or responsible disclaimer. More research needs to be done regarding the potential of PMs to exacerbate psychiatric symptoms, and responsible messaging surrounding this practice. 
+
+## Motivation
+_Please write a short paragraph describing the motivation for your study, including any *necessary* background information for a general reader to understand about the phenomenon you are investigating._
+
+The last few decades have seen a marked change in scholarly research and public attitudes surrounding "psychedelic" compounds. These compounds are a diverse class, largely comprised of serotonergic hallucinogens. Changes in drug policy following randomized, controlled clinical trials have led to psychedelic prescriptions for treatment-resistant psychiatric disorders (Daly et al., 2018). Moreover, a complete reversal of the prevailing attitude toward these compounds in media and public consciousness, as well as publication of hundreds of papers on topics ranging from molecular characterization to therapeutic value constitute what some are calling a "Renaissance" (Sessa, 2018). Moreover, evidence suggests that these compounds have been used for centuries (Rodríguez Arce & Winkelman, 2021), and recreational or illegal use of these compounds persists worldwide, with PMs being one of the most longstanding psychedelic substances consumed by humans. Despite these changes in attitude and documentation that PMs are well-tolerated physiologically (Tylš et al., 2014), and although human consumption of psychedelics is not new, little scientific research has investigated their psychological harm potential. Widespread recreational use implies that data on the relationship between psychedelics and psychiatric symptoms exists outside of randomized controlled trials, a fact of which which our target article (Matzopoulos et al., 2022) made use. We are motivated to examine the data collected in this article to determine if relief from psychiatric symptoms drives recreational use of PMs, if promotion in media contributes to this phenomenon, and if there is any cause for concern regarding mental health outcomes resulting from PM use.  
+
+## Research questions
+_Here you will write the crisply stated research questions that are the focus of our study. Please refer to the underlying constructs that you aim to understand with this research, even if they are not exactly the same as the variables you have measured. Each of these questions sets up a specific element of our analysis plan below._
+
+1. Does previous exposure to benefits of PMs for psychiatric symptoms correlate with increased use among individuals?
+
+2. Our second question: Do individuals experiencing psychiatric symptoms use PMs at a higher rate than those who are not?
+
+3. Our third question: Are individuals with specific combinations of different psychiatric symptoms more likely to use PM?
+
+## Hypotheses
+_Here you will lay out different concrete possible outcomes that pertain to our first research question above, and state what each outcome would imply. Note that you do not need to commit to a particular belief about what you expect or "want" to find; it is sufficient to demonstrate that you understand what various outcomes would imply with respect to your research questions above._
+
+1. We hypothesize that previous exposure to PM's positive effects is associated with PM use. Finding a significant association between past-year PM use and hearing positive things about PM use, especially regarding use for psychiatric conditions and well-being would suggest that there is a relationship between a person hearing positive things about using PMs and deciding to use them.
+
+2. We hypothesize that there are correlations between self-reported past-year PM use and an individual's mental health status indexed by scores on different psychiatric evaluations such as the CCI, GAD-7, and PHQ-9. Finding significance in a multivariate logistical regression across these variables would suggest a relationship between PM use and an individual's mental health status.
+
+3. We hypothesize that the correlations between self-reported PM use and an individual's CCI, GAD-7, or PHQ-9 scores changes depending on the individual's status on the two other psychiatric evaluations. Finding significant interactions three psychiatric evaluations would suggest that PM use is affected by the combination of psychiatric symptoms that the individual presents.
+
+## Methods
+
+### Study type
+_Is this study employing experimental or observational data?: _
+
+Our target study employs observational data obtained through a national (US) online study operative from November 2020 - March 2021.
+
+### Independent variables
+_If you are working with experimental data, precisely define any variables you plan to manipulate, including the levels and whether the manipulation will be between or within participants. If you are working with observational data, please define which predictor variables you will be analyzing._
+
+We will be analyzing the following predictor variables, which can be grouped into 3 categories:
+
+1. Demographic information (Age, Sex, Ethnicity, Geographical Region, Insurance Information)
+
+2. Knowledge about PM (Heard PM has positive uses for mental health)
+
+3. Psychiatric Evaluations (Charlson Co-morbidity Index (CCI), Generalized Anxiety Disorder Scale (GAD-7), Patient Health Questionnaire (PHQ-9))
+
+
+### Dependent variables
+_Please indicate a single outcome variable of interest._
+
+Past-year psychedelic mushroom use.
+
+### Data preprocessing
+_What kinds of transformations will you need to apply to your data before you can fit a statistical model to them? What is your plan for handling missing data? How will you determine which data points or samples (if any) to exclude from your analyses? How will outliers be handled? Will you use any awareness or attention check?_
+
+The dataset from Matzopoulos et al. (2022) was mostly well curated, except for the missing data regarding participants' education level and employment status. For the dependent variable, there are three variables in the dataset regarding past-year psychedelic use that must be aggregated into a single variable, wherein any indication of past-year psychedelic use is recorded. For the independent variables, the dummy code in the current dataset must be transformed into factors according to the attached code book by the original authors. 
+
+## Results
+
+### Data visualizations
+_Please include at least one polished data visualization that visualizes the relationship between your independent and dependent variables. Please choose a graph type that makes it easy for your viewer to extract true and meaningful information about this relationship. Please visualize uncertainty in any point estimates (e.g., error bars or bands representing confidence intervals). Please ensure that the labels for all axes are legible, and that the axis limits make sense. Please provide a title for your visualization. Please use color only as needed in order to help communicate the key message your data visualization is intended to convey._
+
+```{r, out.width="1\\linewidth", include=TRUE, fig.align="center", fig.cap=c("PM users are more likely to have heard about PM's positive effect on mental health. 'Unawareness of PM's positive effect' is measured by a question that asked if participant have heard more than usual about the positive uses of psychedelics drugs for mental health issues, with 1 being Strongly Agree, and 5 being Strongly Disagree"), echo=FALSE}
+knitr::include_graphics("figures/f1rep.pdf")
+```
+
+```{r, out.width="1\\linewidth", include=TRUE, fig.align="center", fig.cap=c("Knowledge of PM's positive effects on mental health predicts past-year PM Use. Logistical regression of past-year PM use by unawareness of PM's positive effects is plotted in blue."), echo=FALSE}
+knitr::include_graphics("figures/f2rep.pdf")
+```
+
+```{r, out.width="1\\linewidth", include=TRUE, fig.align="center", fig.cap=c("Odd ratios of past-year psychedelic mushroom use predicted by demographic and health factors. Odd ratios above 1 indicates that the factor is predictive of past-year psychedelic mushroom use, odd ratios below 1 indicates that the factor is predictive of non-psychedelic use."), echo=FALSE}
+knitr::include_graphics("figures/f3rep.pdf")
+```
+
+```{r, out.width="1\\linewidth", include=TRUE, fig.align="center", fig.cap=c("Older males are more likely to use PM than older women. Logistical regression of past-year PM use by age is plotted, with male plotted in blue and female plotted in red."), echo=FALSE}
+knitr::include_graphics("figures/f4nov.pdf")
+```
+
+### Statistical modeling
+_Please define at least one **COMPACT MODEL** and one **AUGMENTED MODEL** to compare._
+
+** COMPACT MODEL **
+
+PM = Error 
+
+** POSITIVE EXPOSURE MODEL **
+
+PM = Exposure to PM's Positive Effects + Error
+
+** PSYCHIATRIC SYMPTOM MODEL **
+
+PM = Sex + Age + Ethnicity + Region + Co-morbidity + Anxiety + Depression + Insurance + Error
+
+** MENTAL HEALTH INTERACTION MODEL **
+
+PM = Sex + Age + Ethnicity + Region + (Co-morbidity * Anxiety * Depression) + Insurance + Error
+
+### Summary of findings
+_Please write a few sentences to explain what you can infer from your statistical analyses. Please report both inferential statistics (e.g., F-stat, p-values) pertaining to model comparisons. In addition, please write a few sentences that provide interpretation for what your modeling results mean, by converting the values in the table into understandable statements about how changes in key independent variables affect the dependent variable in units that will be meaningful to your reader._
+
+PM use is significantly associated with knowledge of PM's positive effects on mental health (F(1, 6733) = 181.79, p < 0.001). Non-psychedelic users report that they are more unaware of PM's positive effects (M = 3.56, SD = 1.20) than users who only report PM use (M = 2.06, SD = 1.07). Additionally, participants who report that they are more unaware of PM's positive effects on mental health are also less likely to have used PM within the last year (OR = 0.30, 95% CI = [0.26, 0.35]). 
+
+Select demographic and health factors are predictive of past-year psychedelic mushroom use. Particularly, past-psychedelic mushroom use is associated with being male (OR = 2.73, 95% CI = [2.04, 3.65]), white (OR = 1.64, 95% CI = [1.18, 2.28]), higher co-morbidity (OR = 1.28, 95% CI = [1.14, 1.44]), and having moderate to severe depression (OR = 2.65, 95% CI = [1.84, 3.83]). Conversely, non-psychedelic use is associated with increased age (OR = 0.95, 95% CI = [0.94, 0.96]) and being from the Midwest (OR = 0.62, 95% CI = [0.41, 0.95]). 
+
+Health factors like co-morbidity, anxiety, and depression do not significantly interact with each other (OR = 1.43, 95% CI = [0.56, 3.65]), but in an exploratory analysis, demographic factors like sex and age do significantly interact with each other (OR = 1.03, 95% CI = [1.01, 1.06]), where older men are more likely to use psychedelic mushrooms than older women. Additionally, when the interaction between sex and age is taken into account, past-psychedelic mushroom use becomes no longer significantly associated with being male (OR = 0.83, 95% CI = [0.35, 2.01]). It is reasonable that the association between past-psychedelic mushroom use and being male is qualified by this interaction between sex and age. 
+
+## Discussion
+_Please write a few sentences about the broader implications of this research. Please also note any methodological limitations or other open questions for future research to address--Our results indicate....Retrospective, cross-sectional experiment designs dominate this field....It is conceivable that individuals with pre-existing psychiatric issues or cognitive deficits are more inclined to use; these may be a cause of use as opposed to a consequence...._
+
+The results of reproducing select analyses from Matzopoulos et al. (2022) demonstrates that knowing about the positive effects of PM use on mental health is associated with PM use in the past year. This shows that it is possible that public education efforts on PM's positive effects on mental health may be useful for encouraging PM use, provided that the same pattern emerges in a behavior modification experiment.
+
+Also, participants who experiences moderate to severe depression (but not anxiety) are more likely to use PMs at a higher rate. It is unclear whether it is the case that participants who are already depressed are using PM in an effort to alleviate their symptoms, or that using PM causes participants to be more depressed. Given the association of PM use and knowledge about PM's positive effects on mental health, along with previous studies on the positive effects of psychedelic compounds on mental health (Griffiths et al., 2011; Carhart-Harris et al., 2017), it may be more likely that already depressed participants are self-medicating with PM, but that is not known. Future longitudinal studies on chronic PM use on psychiatric symptoms over time may elucidate the exact mechanisms by which PM and psychiatric symptoms interact. 
+
+On top of reproduced analyses, we analyzed the interaction between health and psychiatric symptoms in contribution to predicting PM use, and found that health and psychiatric symptoms do not significantly interact with each other. However, in an exploratory analyses, we show that the demographic factors of participants interact with each other. Particularly, we show that males are more likely to use PM, but that is qualified by the interaction that older males are more likely to use PM than older females. This analysis implicates that older females seem to be a particular demographic that is unlikely to use PM, and more research in this particular demographic may be fruitful in understanding why some people may be unwilling to use PM. 
+
+It is to note that the results we were able to reproduce deviates from Matzopoulos et al. (2022). Specifically, Matzopoulos et al. (2022) show that both depression and anxiety are associated with PM use, while our reproduced analysis only shows that depression is associated with PM use. This may be due to the public dataset missing information about participant education and employment, which the authors allegedly took into account when analyzing the association between psychiatric symptoms and PM use. Also, the authors included weights for each participant that corrects each participant's data to the US census, but our reproduced analyses were not able to incorporate weights at this moment. It may be the case that the combination of these factors contributed to how we were not able to exactly reproduce Matzopoulos et al. (2022)'s findings. 
+
+## References
+Blanco, C., Wall, M. M., Hoertel, N., Krueger, R. F., Liu, S.-M., Grant, B. F., & Olfson, M. (2021). Psychiatric disorders and risk for multiple adverse outcomes: A national prospective study. Molecular Psychiatry, 26(3), Article 3. https://doi.org/10.1038/s41380-019-0459-4
+
+Carhart-Harris, R. L., Roseman, L., Bolstridge, M., Demetriou, L., Pannekoek, J. N., Wall, M. B., Tanner, M., Kaelen, M., McGonigle, J., Murphy, K., Leech, R., Curran, H. V., & Nutt, D. J. (2017). Psilocybin for treatment-resistant depression: FMRI-measured brain mechanisms. Scientific Reports, 7(1), Article 1. https://doi.org/10.1038/s41598-017-13282-7
+
+Daly, E. J., Singh, J. B., Fedgchin, M., Cooper, K., Lim, P., Shelton, R. C., Thase, M. E., Winokur, A., Van Nueten, L., Manji, H., & Drevets, W. C. (2018). Efficacy and Safety of Intranasal Esketamine Adjunctive to Oral Antidepressant Therapy in Treatment-Resistant Depression: A Randomized Clinical Trial. JAMA Psychiatry, 75(2), 139–148. https://doi.org/10.1001/jamapsychiatry.2017.3739
+
+Griffiths, R. R., Johnson, M. W., Richards, W. A., Richards, B. D., McCann, U., & Jesse, R. (2011). Psilocybin occasioned mystical-type experiences: Immediate and persisting dose-related effects. Psychopharmacology, 218(4), 649–665. https://doi.org/10.1007/s00213-011-2358-5
+
+Liu, N. H., Daumit, G. L., Dua, T., Aquila, R., Charlson, F., Cuijpers, P., Druss, B., Dudek, K., Freeman, M., Fujii, C., Gaebel, W., Hegerl, U., Levav, I., Munk Laursen, T., Ma, H., Maj, M., Elena Medina‐Mora, M., Nordentoft, M., Prabhakaran, D., … Saxena, S. (2017). Excess mortality in persons with severe mental disorders: A multilevel intervention framework and priorities for clinical practice, policy and research agendas. World Psychiatry, 16(1), 30–40. https://doi.org/10.1002/wps.20384 
+
+Rodríguez Arce, J. M., & Winkelman, M. J. (2021). Psychedelics, Sociality, and Human Evolution. Frontiers in Psychology, 12, 729425. https://doi.org/10.3389/fpsyg.2021.729425
+
+Sessa, B. (2018). The 21st century psychedelic renaissance: Heroic steps forward on the back of an elephant. Psychopharmacology, 235(2), 551–560. https://doi.org/10.1007/s00213-017-4713-7
+
+Shanahan, L., & Copeland, W. E. (2021). Psychiatry and Deaths of Despair. JAMA Psychiatry, 78(7), 695–696. https://doi.org/10.1001/jamapsychiatry.2021.0256
+
+
+
