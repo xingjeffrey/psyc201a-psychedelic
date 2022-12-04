@@ -149,6 +149,7 @@ PM_cleaned_PMvsNonPsy %>%
   ylim(1, 5)
 
 ggsave(filename = 'figures/f1rep.pdf', width = 4, height = 4, dpi = 300)
+ggsave(filename = 'figures/f1rep.png', width = 4, height = 4, dpi = 300)
 ```
 #### Add helper
 ```{r}
@@ -205,6 +206,7 @@ PM_cleaned %>%
   ylim(0, 1)
   
 ggsave(filename = 'figures/f2rep.pdf', width = 6, height = 4, dpi = 300)
+ggsave(filename = 'figures/f2rep.png', width = 6, height = 4, dpi = 300)
 ```
 
 
@@ -278,6 +280,7 @@ ggplot(data = figure1df, aes(x = full_model_results.OR, y = Factor, xmin = or.ci
   guides(fill=guide_legend(title="New Legend Title"))
 
 ggsave(filename = 'figures/f3rep.pdf', width = 9, height = 4, dpi = 300)
+ggsave(filename = 'figures/f3rep.png', width = 9, height = 4, dpi = 300)
 ```
 
 
@@ -319,6 +322,7 @@ PM_cleaned %>%
   )
 
 ggsave(filename = 'figures/f4nov.pdf', width = 6, height = 4, dpi = 300)
+ggsave(filename = 'figures/f4nov.png', width = 6, height = 4, dpi = 300)
 ```
 
 # Session Info

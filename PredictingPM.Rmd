@@ -32,11 +32,11 @@ _Here you will write the crisply stated research questions that are the focus of
 ## Hypotheses
 _Here you will lay out different concrete possible outcomes that pertain to our first research question above, and state what each outcome would imply. Note that you do not need to commit to a particular belief about what you expect or "want" to find; it is sufficient to demonstrate that you understand what various outcomes would imply with respect to your research questions above._
 
-1. We hypothesize that previous exposure to PM's positive effects is associated with PM use. Finding a significant association between past-year PM use and hearing positive things about PM use, especially regarding use for psychiatric conditions and well-being would suggest that there is a relationship between a person hearing positive things about using PMs and deciding to use them.
+1. We hypothesize that previous exposure to PM's positive effects increases the probability of past-year PM use. Finding significantly higher odds of past-year PM use as predicted by hearing positive things about PM use, especially regarding use for psychiatric conditions and well-being would suggest that there is a relationship between a person hearing positive things about using PMs and deciding to use them.
 
-2. We hypothesize that there are correlations between self-reported past-year PM use and an individual's mental health status indexed by scores on different psychiatric evaluations such as the CCI, GAD-7, and PHQ-9. Finding significance in a multivariate logistical regression across these variables would suggest a relationship between PM use and an individual's mental health status.
+2. We hypothesize that moderate to severe depression and anxiety, as indexed by scores on different psychiatric evaluations such as the CCI, GAD-7, and PHQ-9, increase probability of past-year PM use. Finding significantly increased probability of past-year PM use as predicted by moderate to severe depression/anxiety in a multivariate logistical regression would suggest a relationship between PM use and an individual's mental health status.
 
-3. We hypothesize that the correlations between self-reported PM use and an individual's CCI, GAD-7, or PHQ-9 scores changes depending on the individual's status on the two other psychiatric evaluations. Finding significant interactions three psychiatric evaluations would suggest that PM use is affected by the combination of psychiatric symptoms that the individual presents.
+3. We hypothesize that the probability of self-reported PM use as predicted by an individual's CCI, GAD-7, or PHQ-9 scores changes depending on the individual's status on the two other psychiatric evaluations. Finding significant interactions three psychiatric evaluations would suggest that PM use is affected by the combination of psychiatric symptoms that the individual presents.
 
 ## Methods
 
