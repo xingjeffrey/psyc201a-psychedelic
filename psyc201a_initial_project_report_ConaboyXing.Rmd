@@ -59,11 +59,12 @@ The dataset from Matzopoulos et al. (2022) was mostly well curated, except for t
 ## Results
 
 ### Data visualizations
-```{r, out.width="1\\linewidth", include=TRUE, fig.align="center", fig.cap=c("Odd ratios of past-year psychedelic mushroom use predicted by demographic and health factors. Odd ratios above 1 indicates that the factor is predictive of past-year psychedelic mushroom use, odd ratios below 1 indicates that the factor is predictive of non-psychedelic use."), echo=FALSE}
+
+```{r, out.width="1\\linewidth", include=TRUE, fig.align="center", fig.cap=c("PM users are more likely to have heard about PM's positive effect on mental health. 'Unawareness of PM's positive effect' is measured by a question that asked if participant have heard more than usual about the positive uses of psychedelics drugs for mental health issues, with 1 being Strongly Agree, and 5 being Strongly Disagree"), echo=FALSE}
 knitr::include_graphics("figures/f1rep.pdf")
 ```
 
-```{r, out.width="1\\linewidth", include=TRUE, fig.align="center", fig.cap=c("Odd ratios of past-year psychedelic mushroom use predicted by demographic and health factors. Odd ratios above 1 indicates that the factor is predictive of past-year psychedelic mushroom use, odd ratios below 1 indicates that the factor is predictive of non-psychedelic use."), echo=FALSE}
+```{r, out.width="1\\linewidth", include=TRUE, fig.align="center", fig.cap=c("Knowledge of PM's positive effects on mental health predicts past-year PM Use. Logistical regression of past-year PM use by unawareness of PM's positive effects is plotted in blue."), echo=FALSE}
 knitr::include_graphics("figures/f2rep.pdf")
 ```
 
@@ -71,7 +72,7 @@ knitr::include_graphics("figures/f2rep.pdf")
 knitr::include_graphics("figures/f3rep.pdf")
 ```
 
-```{r, out.width="1\\linewidth", include=TRUE, fig.align="center", fig.cap=c("Odd ratios of past-year psychedelic mushroom use predicted by demographic and health factors. Odd ratios above 1 indicates that the factor is predictive of past-year psychedelic mushroom use, odd ratios below 1 indicates that the factor is predictive of non-psychedelic use."), echo=FALSE}
+```{r, out.width="1\\linewidth", include=TRUE, fig.align="center", fig.cap=c("Older males are more likely to use PM than older women. Logistical regression of past-year PM use by age is plotted, with male plotted in blue and female plotted in red."), echo=FALSE}
 knitr::include_graphics("figures/f4nov.pdf")
 ```
 
@@ -93,18 +94,23 @@ $PM = Sex + Age + Ethnicity + Region + (Co-morbidity * Anxiety * Depression) + I
 
 ### Summary of findings
 
+PM use is significantly associated with knowledge of PM's positive effects on mental health (F(1, 6733) = 181.79, p < 0.001). Non-psychedelic users report that they are more unaware of PM's positive effects (M = 3.56, SD = 1.20) than users who only report PM use (M = 2.06, SD = 1.07). Additionally, participants who report that they are more unaware of PM's positive effects on mental health are also less likely to have used PM within the last year (OR = 0.30, 95% CI = [0.26, 0.35]). 
+
 Select demographic and health factors are predictive of past-year psychedelic mushroom use. Particularly, past-psychedelic mushroom use is associated with being male (OR = 2.73, 95% CI = [2.04, 3.65]), white (OR = 1.64, 95% CI = [1.18, 2.28]), higher co-morbidity (OR = 1.28, 95% CI = [1.14, 1.44]), and having moderate to severe depression (OR = 2.65, 95% CI = [1.84, 3.83]). Conversely, non-psychedelic use is associated with increased age (OR = 0.95, 95% CI = [0.94, 0.96]) and being from the Midwest (OR = 0.62, 95% CI = [0.41, 0.95]). 
 
-
-
 Health factors like co-morbidity, anxiety, and depression do not significantly interact with each other (OR = 1.43, 95% CI = [0.56, 3.65]), but in an exploratory analysis, demographic factors like sex and age do significantly interact with each other (OR = 1.03, 95% CI = [1.01, 1.06]), where older men are more likely to use psychedelic mushrooms than older women. Additionally, when the interaction between sex and age is taken into account, past-psychedelic mushroom use becomes no longer significantly associated with being male (OR = 0.83, 95% CI = [0.35, 2.01]). It is reasonable that the association between past-psychedelic mushroom use and being male is qualified by this interaction between sex and age. 
-
-We also note that the augmented model (AIC = 1788.5) improved model fit over the compact model (AIC = 2021.1). The health interaction model (AIC = 1789.9) that takes into account interactions between co-morbidity, anxiety, and depression does not improve model fit, but the sex and age interaction model (AIC = 1782.6) improved model fit over the augmented model. 
 
 ## Discussion
 _Please write a few sentences about the broader implications of this research. Please also note any methodological limitations or other open questions for future research to address._
 
-[Discussion on hold.]
+The results of reproducing select analyses from Matzopoulos et al. (2022) demonstrates that knowing about the positive effects of PM use on mental health is significantly associated with PM use in the past year. This shows that it is possible that public education efforts on PM's positive effects on mental health may be useful for encouraging PM use, provided that the same pattern emerges in a behavior modification experiment.
+
+Also, the reproduced results show that participants who experiences moderate to severe depression (but not anxiety), are more likely to use PMs at a higher rate. It is unclear whether it is the case that participants who are already depressed are using PM in an effort to alleviate their symptoms, or that using PM causes participants to be more depressed. Given the association of PM use and knowledge about PM's positive effects on mental health, along with previous studies on the positive effects of psychedelic compounds on mental health (Griffiths et al., 2011; Carhart-Harris et al., 2017), it may be more likely that already depressed participants are self-medicating with PM, but that is not known. 
+
+On top of reproduced analyses, we analyzed the interaction between health and psychiatric symptoms in contribution to predicting PM use, and found that health and psychiatric symptoms do not significantly interact with each other. However, in an exploratory analyses, we show that the demographic factors of participants interact with each other. Particularly, we show that males are more likely to use PM, but that is qualified by the interaction that older males are more likely to use PM than older females. It is implicated from this analysis that older females seem to be a particular demographic that is unlikely to use PM, and more research in this particular demographic may be fruitful in understanding why some people may be unwilling to use PM. 
+
+It is to note that the results we were able to reproduce deviates from Matzopoulos et al. (2022). Specifically, Matzopoulos et al. (2022) show that both depression and anxiety are associated with PM use, while our reproduced analysis only shows that depression is associated with PM use. This may be due to the public dataset missing information about participant education and employment, which the authors allegedly took into account when analyzing the association between psychiatric symptoms and PM use. Also, the authors included weights for each participant that corrects each participant's data to the US census, but our reproduced analyses were not able to incorporate weights at this moment. It may be the case that the combination of these factors contributed to how we were not able to exactly reproduce Matzopoulos et al. (2022)'s findings. 
+
 
 ## References
 Blanco, C., Wall, M. M., Hoertel, N., Krueger, R. F., Liu, S.-M., Grant, B. F., & Olfson, M. (2021). Psychiatric disorders and risk for multiple adverse outcomes: A national prospective study. Molecular Psychiatry, 26(3), Article 3. https://doi.org/10.1038/s41380-019-0459-4
